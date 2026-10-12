@@ -1,0 +1,9 @@
+itching,skin_rash,fever,cough,headache,vomiting,fatigue,disease
+1,1,0,0,0,0,0,Fungal Infection
+0,0,1,1,1,0,1,Flu
+1,1,0,0,1,0,0,Allergy
+0,0,1,1,1,1,1,Viral Infection
+0,0,1,1,0,0,1,Common Cold
+
+
+

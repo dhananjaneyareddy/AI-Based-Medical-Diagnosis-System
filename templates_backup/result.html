@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Medical Prediction Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body><nav class="main-navbar">
+
+    <div class="nav-logo">
+
+        <div class="logo-icon">
+            +
+        </div>
+
+        <div>
+            <span>AI Medical</span>
+            <strong>Diagnosis</strong>
+        </div>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+    </div>
+
+    <a href="/" class="nav-predict-btn">
+        New Prediction
+    </a>
+
+</nav>
+
+<div class="container">
+
+    <h1>AI Medical Diagnosis Result</h1>
+
+
+    {% if prediction %}
+
+        <!-- ============================= -->
+        <!-- PREDICTION -->
+        <!-- ============================= -->
+
+     <div class="result">
+
+    <h2>Predicted Disease</h2>
+
+    <p class="prediction">
+        {{ prediction }}
+    </p>
+
+    {% if confidence is not none %}
+
+        <p class="confidence">
+            Top prediction probability:
+            <strong>{{ confidence }}%</strong>
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ============================= -->
+<!-- TOP 3 PREDICTIONS -->
+<!-- ============================= -->
+
+<div class="information-box">
+
+    <h2>Top 3 Model Predictions</h2>
+
+    {% for item in top_predictions %}
+
+        <div class="prediction-row">
+
+            <div class="prediction-number">
+                {{ loop.index }}
+            </div>
+
+            <div class="prediction-disease">
+                {{ item.disease }}
+            </div>
+
+            <div class="prediction-probability">
+
+                {% if item.probability is not none %}
+                    {{ item.probability }}%
+                {% else %}
+                    N/A
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+        <!-- ============================= -->
+        <!-- SELECTED SYMPTOMS -->
+        <!-- ============================= -->
+
+        <div class="information-box">
+
+            <h2>Selected Symptoms</h2>
+
+            <ul>
+
+                {% for symptom in selected_symptoms %}
+
+                    <li>
+                        {{ symptom.replace("_", " ").title() }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- PRECAUTIONS -->
+        <!-- ============================= -->
+
+        <div class="information-box">
+
+            <h2>Precautions</h2>
+
+            {% if precautions %}
+
+                <ul>
+
+                    {% for precaution in precautions %}
+
+                        <li>{{ precaution }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>
+                    No precaution information found
+                    in the dataset.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- RISK FACTORS -->
+        <!-- ============================= -->
+
+        <div class="information-box">
+
+            <h2>Risk Factors</h2>
+
+            {% if risk_factors %}
+
+                <ul>
+
+                    {% for risk in risk_factors %}
+
+                        <li>{{ risk }}</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p>
+                    No risk-factor information found
+                    in the dataset.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- MEDICINE INFORMATION -->
+        <!-- ============================= -->
+
+        <div class="information-box">
+
+            <h2>Medicine Information</h2>
+
+            {% if medicines %}
+
+                {% for medicine in medicines %}
+
+                    <div class="medicine">
+
+                        <h3>
+                            {{ medicine.name }}
+                        </h3>
+
+                        <p>
+                            <strong>Composition:</strong>
+                            {{ medicine.composition }}
+                        </p>
+
+                        <p>
+                            <strong>Description:</strong>
+                            {{ medicine.description }}
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>
+                    No medicine information found
+                    in the dataset.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- MEDICAL DISCLAIMER -->
+        <!-- ============================= -->
+
+        <div class="medical-warning">
+
+            <strong>Important Medical Notice</strong>
+
+            <p>
+                This system provides an AI/ML-based prediction
+                for educational and demonstration purposes.
+                It is not a confirmed medical diagnosis and
+                should not be used as a substitute for advice
+                from a qualified healthcare professional.
+            </p>
+
+        </div>
+
+
+    {% else %}
+
+        <div class="warning">
+
+            <h2>No Symptoms Selected</h2>
+
+            <p>
+                Please select at least one symptom.
+            </p>
+
+        </div>
+
+    {% endif %}
+<div class="medical-disclaimer">
+    <h3>⚠️ Medical Disclaimer</h3>
+
+    <p>
+        This AI-Based Medical Diagnosis System is developed
+        for educational and informational purposes only.
+        The prediction provided by the machine learning model
+        should not be considered a medical diagnosis.
+    </p>
+
+    <p>
+        Please consult a qualified doctor or healthcare
+        professional for proper diagnosis and treatment.
+    </p>
+</div>
+    <div class="check-again-container">
+    <a href="/" class="check-again-btn">Check Again</a>
+</div>
+
+</div><footer class="main-footer">
+
+    <p>
+        © 2026 AI-Based Medical Diagnosis System
+    </p>
+
+    <p>
+        Machine Learning • Flask • Python
+    </p>
+
+</footer>
+
+</body>
+
+</html>

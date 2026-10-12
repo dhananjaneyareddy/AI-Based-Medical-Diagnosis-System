@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Medical Diagnosis</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="main-navbar">
+
+        <div class="nav-logo">
+
+            <div class="logo-icon">
+                +
+            </div>
+
+            <div>
+                <span>AI Medical</span>
+                <strong>Diagnosis</strong>
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="/" class="active">
+                Home
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/history">
+                History
+            </a>
+
+        </div>
+
+
+        <a href="#symptoms"
+           class="nav-predict-btn">
+
+            New Prediction
+
+        </a>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <p class="hero-small-title">
+                ARTIFICIAL INTELLIGENCE & HEALTHCARE
+            </p>
+
+            <h1>
+                AI-Powered
+                <span>Medical Diagnosis</span>
+            </h1>
+
+            <p class="hero-description">
+
+                Select your symptoms and our machine
+                learning model will predict the most
+                probable disease based on the available
+                medical dataset.
+
+            </p>
+
+            <a href="#symptoms"
+               class="primary-btn">
+
+                Check Your Symptoms
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+
+     
+    </section>
+    <!-- About Our Project -->
+
+<section class="about-project">
+
+    <div class="about-image">
+
+        <img
+            src="{{ url_for('static', filename='images/medical-project.png') }}"
+            alt="AI-Based Medical Diagnosis Project"
+        >
+
+    </div>
+
+
+    <div class="about-content">
+
+        <p class="about-label">
+            ABOUT OUR PROJECT
+        </p>
+
+        <h2>
+            AI-Based Medical Diagnosis System
+        </h2>
+
+        <p>
+            Our AI-Based Medical Diagnosis System is a
+            machine learning web application designed to
+            predict a possible disease based on the symptoms
+            selected by the user.
+        </p>
+
+        <p>
+            The system uses medical datasets and a trained
+            machine learning model to analyze symptoms and
+            generate a prediction. It also provides useful
+            information such as precautions, medicines,
+            prediction history, and statistics.
+        </p>
+
+        <div class="about-points">
+
+            <div>
+                ✓ Machine Learning Based Prediction
+            </div>
+
+            <div>
+                ✓ Medical Dataset Integration
+            </div>
+
+            <div>
+                ✓ Prediction History
+            </div>
+
+            <div>
+                ✓ Dashboard & Statistics
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- Feature Cards -->
+
+    <section class="features-section">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🧠
+            </div>
+
+            <h3>
+                AI Based Prediction
+            </h3>
+
+            <p>
+                Our machine learning model analyzes
+                selected symptoms and predicts a
+                possible disease.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Dataset Based
+            </h3>
+
+            <p>
+                Predictions are generated using the
+                medical datasets integrated into
+                the project.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>
+                Prediction Statistics
+            </h3>
+
+            <p>
+                View prediction statistics and
+                disease frequency through the
+                dashboard.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🕒
+            </div>
+
+            <h3>
+                History Tracking
+            </h3>
+
+            <p>
+                Previous predictions can be viewed
+                from the prediction history page.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Symptoms Section -->
+
+    <section class="symptoms-section"
+             id="symptoms">
+
+        <div class="section-heading">
+
+            <p>
+                AI MEDICAL ANALYSIS
+            </p>
+
+            <h2>
+                Select Your Symptoms
+            </h2>
+
+            <span>
+                Select the symptoms you are experiencing
+                and click Predict Disease.
+            </span>
+
+        </div>
+
+
+        <form action="/predict"
+              method="POST"
+              class="prediction-form">
+
+
+            <div class="symptoms-container">
+
+                {% for symptom in symptoms %}
+
+                <label class="symptom-card">
+
+                    <input
+                        type="checkbox"
+                        name="{{ symptom }}"
+                        value="1"
+                    >
+
+                    <span>
+                        {{ symptom.replace('_', ' ') }}
+                    </span>
+
+                </label>
+
+                {% endfor %}
+
+            </div>
+
+
+            <div class="predict-button-container">
+
+                <button
+                    type="submit"
+                    class="primary-btn predict-btn">
+
+                    Predict Disease
+                    <span>→</span>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- Disclaimer -->
+
+    <section class="home-disclaimer">
+
+        <strong>
+            Medical Disclaimer:
+        </strong>
+
+        This application is developed for educational
+        and informational purposes only. The prediction
+        should not replace professional medical advice,
+        diagnosis, or treatment.
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer class="main-footer">
+
+        <p>
+            © 2026 AI-Based Medical Diagnosis System
+        </p>
+
+        <p>
+            Machine Learning • Flask • Python
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

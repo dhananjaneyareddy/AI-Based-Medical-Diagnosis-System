@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="history-page">
+
+        <h1>Prediction History</h1>
+
+        <p class="history-subtitle">
+            Previous AI-based medical predictions
+        </p>
+
+
+        {% if history %}
+
+            <div class="history-container">
+
+                {% for record in history %}
+
+                    <div class="history-card">
+
+                        <h2>
+                            {{ record.prediction }}
+                        </h2>
+
+                        <p>
+                            <strong>Date & Time:</strong>
+                            {{ record.date_time }}
+                        </p>
+
+                        <p>
+                            <strong>Confidence:</strong>
+
+                            {% if record.confidence is not none %}
+                                {{ record.confidence }}%
+                            {% else %}
+                                Not available
+                            {% endif %}
+
+                        </p>
+
+
+                        <div class="history-symptoms">
+
+                            <strong>
+                                Selected Symptoms:
+                            </strong>
+
+                            <ul>
+
+                                {% for symptom in record.symptoms %}
+
+                                    <li>
+                                        {{ symptom.replace('_', ' ') }}
+                                    </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="no-history">
+
+                <h2>No Prediction History</h2>
+
+                <p>
+                    You have not made any predictions yet.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <div class="history-buttons">
+
+            <a href="/" class="history-btn">
+                Check Again
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

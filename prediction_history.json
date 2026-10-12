@@ -1,0 +1,193 @@
+[
+    {
+        "date_time": "11-08-2026 21:30:15",
+        "symptoms": [
+            "itching",
+            "skin_rash"
+        ],
+        "prediction": "Fungal infection",
+        "confidence": 92.5
+    },
+    {
+        "date_time": "15-08-2026 10:30:55",
+        "symptoms": [
+            "weight_gain",
+            "yellowing_of_eyes",
+            "yellowish_skin"
+        ],
+        "prediction": "Hepatitis C",
+        "confidence": 16.5
+    },
+    {
+        "date_time": "15-08-2026 10:31:57",
+        "symptoms": [
+            "blood_in_sputum",
+            "breathlessness",
+            "chills"
+        ],
+        "prediction": "Allergy",
+        "confidence": 17.0
+    },
+    {
+        "date_time": "15-08-2026 10:38:39",
+        "symptoms": [
+            "dehydration",
+            "diarrhoea",
+            "drying_and_tingling_lips"
+        ],
+        "prediction": "Gastroenteritis",
+        "confidence": 35.0
+    },
+    {
+        "date_time": "15-08-2026 11:07:20",
+        "symptoms": [
+            "vomiting"
+        ],
+        "prediction": "Heart attack",
+        "confidence": 15.5
+    },
+    {
+        "date_time": "15-08-2026 11:17:40",
+        "symptoms": [
+            "yellow_crust_ooze"
+        ],
+        "prediction": "Impetigo",
+        "confidence": 19.0
+    },
+    {
+        "date_time": "15-08-2026 12:48:31",
+        "symptoms": [
+            "back_pain"
+        ],
+        "prediction": "Acne",
+        "confidence": 9.5
+    },
+    {
+        "date_time": "15-08-2026 13:10:57",
+        "symptoms": [
+            "extra_marital_contacts",
+            "yellow_crust_ooze"
+        ],
+        "prediction": "AIDS",
+        "confidence": 22.0
+    },
+    {
+        "date_time": "15-08-2026 13:11:09",
+        "symptoms": [
+            "extra_marital_contacts",
+            "yellow_crust_ooze"
+        ],
+        "prediction": "AIDS",
+        "confidence": 22.0
+    },
+    {
+        "date_time": "15-08-2026 13:11:57",
+        "symptoms": [
+            "bruising"
+        ],
+        "prediction": "Dimorphic hemmorhoids(piles)",
+        "confidence": 10.0
+    },
+    {
+        "date_time": "15-08-2026 15:35:22",
+        "symptoms": [
+            "yellow_urine"
+        ],
+        "prediction": "Dimorphic hemmorhoids(piles)",
+        "confidence": 10.0
+    },
+    {
+        "date_time": "15-08-2026 15:38:23",
+        "symptoms": [
+            "cough",
+            "cramps",
+            "dark_urine"
+        ],
+        "prediction": "GERD",
+        "confidence": 11.0
+    },
+    {
+        "date_time": "15-08-2026 16:44:31",
+        "symptoms": [
+            "back_pain",
+            "belly_pain"
+        ],
+        "prediction": "Dimorphic hemmorhoids(piles)",
+        "confidence": 9.0
+    },
+    {
+        "date_time": "15-08-2026 16:52:04",
+        "symptoms": [
+            "excessive_hunger"
+        ],
+        "prediction": "Acne",
+        "confidence": 8.5
+    },
+    {
+        "date_time": "15-08-2026 16:56:51",
+        "symptoms": [
+            "coma",
+            "dark_urine",
+            "dehydration",
+            "depression",
+            "dizziness",
+            "mild_fever"
+        ],
+        "prediction": "Gastroenteritis",
+        "confidence": 17.5
+    },
+    {
+        "date_time": "16-08-2026 17:29:44",
+        "symptoms": [
+            "acidity",
+            "cough",
+            "cramps",
+            "joint_pain"
+        ],
+        "prediction": "GERD",
+        "confidence": 17.0
+    },
+    {
+        "date_time": "16-08-2026 17:49:15",
+        "symptoms": [
+            "continuous_sneezing",
+            "cough",
+            "cramps"
+        ],
+        "prediction": "Allergy",
+        "confidence": 20.5
+    },
+    {
+        "date_time": "16-08-2026 17:52:20",
+        "symptoms": [
+            "anxiety",
+            "blurred_and_distorted_vision",
+            "bruising"
+        ],
+        "prediction": "Hypoglycemia",
+        "confidence": 9.5
+    },
+    {
+        "date_time": "16-08-2026 18:18:02",
+        "symptoms": [
+            "continuous_sneezing",
+            "cough",
+            "cramps",
+            "dark_urine",
+            "excessive_hunger"
+        ],
+        "prediction": "Allergy",
+        "confidence": 15.5
+    },
+    {
+        "date_time": "16-08-2026 18:32:07",
+        "symptoms": [
+            "blister",
+            "blood_in_sputum",
+            "blurred_and_distorted_vision",
+            "breathlessness"
+        ],
+        "prediction": "Heart attack",
+        "confidence": 14.0
+    }
+]

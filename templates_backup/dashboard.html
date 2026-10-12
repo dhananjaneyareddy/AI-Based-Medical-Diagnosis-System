@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Medical Diagnosis Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <nav class="main-navbar">
+
+    <div class="nav-logo">
+
+        <div class="logo-icon">
+            +
+        </div>
+
+        <div>
+            <span>AI Medical</span>
+            <strong>Diagnosis</strong>
+        </div>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/dashboard" class="active">
+            Dashboard
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+    </div>
+
+    <a href="/" class="nav-predict-btn">
+        New Prediction
+    </a>
+
+</nav>
+
+    <div class="dashboard-page">
+
+        <h1>AI-Based Medical Diagnosis Dashboard</h1>
+
+        <p class="dashboard-subtitle">
+            Overview of prediction activity
+        </p>
+
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+
+                <h2>Total Predictions</h2>
+
+                <p class="dashboard-number">
+                    {{ total_predictions }}
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2>Latest Prediction</h2>
+
+                <p class="dashboard-value">
+                    {{ latest_prediction }}
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2>Most Predicted Disease</h2>
+
+                <p class="dashboard-value">
+                    {{ most_predicted }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="chart-container">
+
+    <h2>Disease Prediction Statistics</h2>
+
+    {% if prediction_counts %}
+
+        <div class="chart-wrapper">
+            <canvas id="diseaseChart"></canvas>
+        </div>
+
+    {% else %}
+
+        <div class="no-chart-data">
+            <p>No prediction data available yet.</p>
+            <p>Make at least one prediction to display the chart.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+<div class="recent-predictions">
+
+    <h2>Recent Predictions</h2>
+
+    {% if recent_predictions %}
+
+        <div class="prediction-table-wrapper">
+
+            <table class="prediction-table">
+
+                <thead>
+                    <tr>
+                        <th>Disease</th>
+                        <th>Confidence</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for record in recent_predictions | reverse %}
+
+                    <tr>
+
+                        <td>
+                            {{ record.get("prediction", "Unknown") }}
+                        </td>
+
+                        <td>
+                            {{ record.get("confidence", "N/A") }}
+                        </td>
+
+                        <td>
+                            {{ record.get("created_at", "N/A") }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    {% else %}
+
+        <p class="no-chart-data">
+            No prediction history available.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+        <div class="dashboard-buttons">
+
+            <a href="/" class="dashboard-btn">
+                New Prediction
+            </a>
+
+            <a href="/history" class="dashboard-btn">
+                View Prediction History
+            </a>
+
+        </div>
+
+    </div>
+<script id="prediction-data" type="application/json">
+    {{ prediction_counts | tojson }}
+</script>
+
+  <script>
+    const predictionDataElement =
+        document.getElementById("prediction-data");
+
+    let predictionData = {};
+
+    if (predictionDataElement) {
+        try {
+            predictionData = JSON.parse(
+                predictionDataElement.textContent
+            );
+        } catch (error) {
+            console.error("Unable to read prediction data:", error);
+        }
+    }
+
+    const labels = Object.keys(predictionData);
+    const values = Object.values(predictionData);
+
+    const canvas = document.getElementById("diseaseChart");
+
+    if (canvas && labels.length > 0) {
+
+        new Chart(canvas, {
+            type: "bar",
+
+            data: {
+                labels: labels,
+
+                datasets: [{
+                    label: "Number of Predictions",
+                    data: values,
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+<footer class="main-footer">
+
+    <p>
+        © 2026 AI-Based Medical Diagnosis System
+    </p>
+
+    <p>
+        Machine Learning • Flask • Python
+    </p>
+
+</footer>
+</body>
+
+</html>
+
+
